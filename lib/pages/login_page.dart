@@ -8,6 +8,10 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+  String? error;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold());
