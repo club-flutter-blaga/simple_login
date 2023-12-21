@@ -1,7 +1,7 @@
 class AuthenticationService {
   static AuthenticationService? _authService;
 
-  static AuthenticationService get authenticationService {
+  static AuthenticationService get instance {
     _authService ??= AuthenticationService();
     return _authService!;
   }

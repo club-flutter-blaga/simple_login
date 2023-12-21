@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_login/services/authentication_service.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -8,6 +9,10 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+  String? error;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -27,9 +32,15 @@ class _LoginPageState extends State<LoginPage> {
               ),
               const SizedBox(height: 16),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    error = AuthenticationService.instance
+                        .login(email.text, password.text);
+                  });
+                },
                 child: const Text('Log in'),
-              )
+              ),
+              if (error != null) Text('ERROR: $error'),
             ],
           ),
         ),
